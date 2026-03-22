@@ -1,19 +1,22 @@
-# Rust's output directory
-target
+# Build artifacts
+target/
+*.wasm
 
-# Local settings
-.soroban
-.stellar
+# IDE
+.vscode/
+.idea/
 
-# Temp deployment/debug scripts
-debug_deploy.py
-debug2.py
-deploy3.py
-deploy_node.mjs
-deploy_result.json
-sim_out.json
-contract_id.txt
-deploy.log
+# OS
+Thumbs.db
+.DS_Store
 
-# Rust installer
+# Deploy artifacts
+deploy_id.txt
 rustup-init.exe
+
+# Python
+__pycache__/
+*.pyc
+
+# Gemini
+.gemini/
