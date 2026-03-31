@@ -1,19 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 :root {
     --bg-color: #0d1117;
+    --bg-elevated: #161b22;
     --card-bg: #161b22;
     --text-primary: #e6edf3;
     --text-secondary: #8b949e;
     --accent-color: #58a6ff;
     --accent-hover: #1f6feb;
+    --accent-glow: rgba(88, 166, 255, 0.15);
     --border-color: #30363d;
     --success: #238636;
+    --success-text: #3fb950;
     --danger: #da3633;
-    --font-family: 'Inter', sans-serif;
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --radius: 12px;
+    --radius-sm: 8px;
     --transition: all 0.2s ease;
+    --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.2);
+    --shadow-glow: 0 4px 12px rgba(88, 166, 255, 0.25);
+    --gradient-accent: linear-gradient(90deg, var(--accent-color), #bc8cff);
+    --gradient-card: linear-gradient(145deg, var(--card-bg) 0%, #1c2128 100%);
 }
 
-* {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -25,15 +37,19 @@ body {
     font-family: var(--font-family);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
 }
 
-#app {
+/* ── Layout ──────────────────────────────────────────── */
+.app-container {
     max-width: 800px;
     margin: 0 auto;
     padding: 2rem;
 }
 
-header {
+/* ── Header ──────────────────────────────────────────── */
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -56,6 +72,10 @@ header {
     color: var(--text-primary);
 }
 
+.logo svg {
+    flex-shrink: 0;
+}
+
 .wallet-controls {
     display: flex;
     align-items: center;
@@ -64,7 +84,7 @@ header {
 
 .badge {
     background-color: rgba(46, 160, 67, 0.15);
-    color: #3fb950;
+    color: var(--success-text);
     padding: 0.25rem 0.5rem;
     border-radius: 1rem;
     font-size: 0.75rem;
@@ -74,16 +94,19 @@ header {
     border: 1px solid rgba(46, 160, 67, 0.4);
 }
 
+/* ── Buttons ─────────────────────────────────────────── */
 .btn {
     font-family: var(--font-family);
     font-weight: 600;
     font-size: 0.9rem;
     padding: 0.6rem 1.25rem;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
     transition: var(--transition);
     border: none;
     outline: none;
+    background: transparent;
+    color: var(--text-primary);
 }
 
 .btn.primary {
@@ -94,23 +117,24 @@ header {
 .btn.primary:hover {
     background-color: var(--accent-hover);
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(88, 166, 255, 0.25);
+    box-shadow: var(--shadow-glow);
 }
 
 .btn:disabled {
     opacity: 0.6;
     cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
+    transform: none !important;
+    box-shadow: none !important;
 }
 
-.full-width {
+.btn.full-width {
     width: 100%;
     padding: 1rem;
     font-size: 1rem;
     margin-top: 1rem;
 }
 
+/* ── View Toggle / Tabs ──────────────────────────────── */
 .view-toggle {
     display: flex;
     gap: 0.5rem;
@@ -127,7 +151,7 @@ header {
     border: none;
     color: var(--text-secondary);
     padding: 0.75rem;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     font-family: var(--font-family);
     font-weight: 500;
     cursor: pointer;
@@ -141,30 +165,17 @@ header {
 .tab.active {
     background-color: var(--border-color);
     color: var(--text-primary);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.view-section {
-    display: none;
-    animation: fadeIn 0.3s ease;
-}
-
-.view-section.active {
-    display: block;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
+/* ── Cards ───────────────────────────────────────────── */
 .card {
     background-color: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: var(--radius);
     padding: 2rem;
     margin-bottom: 2rem;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    box-shadow: var(--shadow-card);
 }
 
 .card h2 {
@@ -186,10 +197,11 @@ header {
     margin-bottom: 2rem;
 }
 
+/* ── Balance Card ────────────────────────────────────── */
 .balance-card {
     text-align: center;
     padding: 3rem 2rem;
-    background: linear-gradient(145deg, var(--card-bg) 0%, #1c2128 100%);
+    background: var(--gradient-card);
     position: relative;
     overflow: hidden;
 }
@@ -201,7 +213,7 @@ header {
     left: 0;
     width: 100%;
     height: 4px;
-    background: linear-gradient(90deg, var(--accent-color), #bc8cff);
+    background: var(--gradient-accent);
 }
 
 .balance-display {
@@ -219,6 +231,7 @@ header {
     background: linear-gradient(to right, #ffffff, #8b949e);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .currency {
@@ -227,6 +240,7 @@ header {
     color: var(--text-secondary);
 }
 
+/* ── Form Inputs ─────────────────────────────────────── */
 .input-group {
     margin-bottom: 1.5rem;
     display: flex;
@@ -251,7 +265,7 @@ input {
     border: 1px solid var(--border-color);
     color: var(--text-primary);
     padding: 0.75rem 1rem;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     font-family: var(--font-family);
     font-size: 1rem;
     transition: var(--transition);
@@ -260,9 +274,10 @@ input {
 input:focus {
     outline: none;
     border-color: var(--accent-color);
-    box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.15);
+    box-shadow: 0 0 0 3px var(--accent-glow);
 }
 
+/* ── Reward History ──────────────────────────────────── */
 .empty-state {
     text-align: center;
     color: var(--text-secondary);
@@ -299,11 +314,12 @@ input:focus {
 }
 
 .reward-amount-received {
-    color: #3fb950;
+    color: var(--success-text);
     font-weight: 600;
     font-size: 1.1rem;
 }
 
+/* ── Status Messages ─────────────────────────────────── */
 .status-msg {
     margin-top: 1rem;
     font-size: 0.9rem;
@@ -311,13 +327,70 @@ input:focus {
     min-height: 1.5em;
 }
 
-.status-msg.error { color: var(--danger); }
-.status-msg.success { color: var(--success); }
-.status-msg.loading { color: var(--accent-color); }
+.status-msg.error {
+    color: var(--danger);
+}
 
-@media (max-width: 600px) {
-    .row {
-        flex-direction: column;
-        gap: 0;
+.status-msg.success {
+    color: var(--success);
+}
+
+.status-msg.loading {
+    color: var(--accent-color);
+}
+
+/* ── Animations ──────────────────────────────────────── */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
     }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease;
+}
+
+/* ── Header Input ────────────────────────────────────── */
+.header-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+}
+
+.header-input-wrapper:focus-within {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.header-input-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.header-input {
+    background: transparent;
+    border: none;
+    padding: 0.4rem 0;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    width: 180px;
+    font-family: inherit;
+}
+
+.header-input:focus {
+    outline: none;
+    box-shadow: none;
 }
