@@ -1,7 +1,0 @@
-{
-  "error": "HostError: Error(WasmVm, InvalidAction)\n\nEvent log (newest first):\n   0: [Diagnostic Event] topics:[error, Error(WasmVm, InvalidAction)], data:\"Module(Translation(TranslationError { inner: Validate(BinaryReaderError { inner: BinaryReaderErrorInner { message: \"reference-types not enabled: zero byte expected\", offset: 2841, needed_hint: None } }) }))\"\n",
-  "events": [
-    "AAAAAAAAAAAAAAAAAAAAAgAAAAAAAAACAAAADwAAAAVlcnJvcgAAAAAAAAIAAAABAAAABgAAAA4AAADOTW9kdWxlKFRyYW5zbGF0aW9uKFRyYW5zbGF0aW9uRXJyb3IgeyBpbm5lcjogVmFsaWRhdGUoQmluYXJ5UmVhZGVyRXJyb3IgeyBpbm5lcjogQmluYXJ5UmVhZGVyRXJyb3JJbm5lciB7IG1lc3NhZ2U6ICJyZWZlcmVuY2UtdHlwZXMgbm90IGVuYWJsZWQ6IHplcm8gYnl0ZSBleHBlY3RlZCIsIG9mZnNldDogMjg0MSwgbmVlZGVkX2hpbnQ6IE5vbmUgfSB9KSB9KSkAAA=="
-  ],
-  "results": null
-}

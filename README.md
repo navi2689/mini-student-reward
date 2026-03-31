@@ -1,6 +1,6 @@
 # Mini Student Reward 🎓
 
-A fully functional, decentralized Web3 application built on the Stellar Soroban blockchain. This dApp allows teachers to securely reward students with native XLM, featuring a clean frontend and an optimized Rust smart contract.
+A fully functional, decentralized Web3 application built on the Stellar Soroban blockchain. This dApp allows teachers to securely reward students with native XLM, featuring a modern Next.js frontend and an optimized Rust smart contract.
 
 ## Deployment Details
 
@@ -12,24 +12,20 @@ A fully functional, decentralized Web3 application built on the Stellar Soroban 
 
 ![Dashboard Screenshot](./dashboard.png)
 
-## Stellar Labs
-
-![Stellar Labs Screenshot](./stellar-labs.png)
-
 ## Features ✨
 
 *   **Non-Custodial Wallet Integration:** Securely connect and sign transactions using the [Freighter Browser Extension](https://www.freighter.app/).
 *   **On-Chain Rewards:** The smart contract allows authorized teachers to transfer tokens to students seamlessly.
 *   **Real-time Ledger Interaction:** View account balances and interact with the deployed contract in real time.
 *   **Storage Optimized:** Utilizes Soroban's state management to securely store configuration.
-*   **Clean UI:** A responsive frontend built with vanilla HTML/JS mimicking a modern dashboard.
+*   **Modern Frontend:** Built with Next.js and React for a fast, component-based UI.
 
 ## Project Architecture 🏗️
 
 The project is divided into two main components:
 
-1.  **Smart Contract (`/contracts/mini_reward`)**: Written in Rust using the Soroban SDK (v25.3.0). It handles the core logic and token transfers.
-2.  **Frontend (`/frontend`)**: A lightweight HTML/JS Web3 application that interfaces with the deployed contract on the Soroban Testnet.
+1.  **Smart Contract (`/contracts/mini_reward`)**: Written in Rust using the Soroban SDK (v25). It handles the core logic and token transfers.
+2.  **Frontend (`/frontend`)**: A Next.js application that interfaces with the deployed contract on the Soroban Testnet via `@stellar/stellar-sdk` and `@stellar/freighter-api`.
 
 ---
 
@@ -37,7 +33,7 @@ The project is divided into two main components:
 
 ### Prerequisites
 
-*   [Node.js](https://nodejs.org/) (v18+) or Python for serving static files
+*   [Node.js](https://nodejs.org/) (v18+)
 *   [Rust](https://www.rust-lang.org/) (v1.94+)
 *   [Stellar CLI](https://developers.stellar.org/docs/build/smart-contracts/getting-started/setup)
 *   [Freighter Wallet Extension](https://www.freighter.app/)
@@ -54,24 +50,22 @@ The contract is already deployed to the Stellar Testnet. If you wish to interact
    ```bash
    cargo test
    ```
-3. Deploy the contract using the included script (you must have a funded Stellar testnet account):
-   ```bash
-   bash deploy.sh
-   ```
 
 ### 2. Frontend Application
-
-The frontend uses `@stellar/stellar-sdk` and `@stellar/freighter-api` to connect to the deployed contract.
 
 1. Navigate to the frontend directory:
    ```bash
    cd frontend
    ```
-2. Start the local server:
+2. Install dependencies:
    ```bash
-   python -m http.server 8081
+   npm install
    ```
-3. Open your browser to `http://localhost:8081`.
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+4. Open your browser to `http://localhost:3000`.
 
 ### Connecting your Wallet
 
