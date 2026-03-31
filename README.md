@@ -12,6 +12,10 @@ A fully functional, decentralized Web3 application built on the Stellar Soroban 
 
 ![Dashboard Screenshot](./dashboard.png)
 
+## stellar lab
+
+![stellar lab](./stellar-labs.png)
+
 ## Features ✨
 
 *   **Non-Custodial Wallet Integration:** Securely connect and sign transactions using the [Freighter Browser Extension](https://www.freighter.app/).
